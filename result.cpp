@@ -71,7 +71,7 @@ int valid(string str) {
 	int output;
 	stringstream strs(str);
 	strs>>output;
-	char non_int[] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
+ string non_int = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
 	int mistake = 0;
 	int n = sizeof(str)/sizeof(str[0]);
 	int m = sizeof(non_int)/sizeof(non_int[0]);
@@ -81,10 +81,6 @@ int valid(string str) {
 	for(i=0; i<n; i++) {
 		for(j=0; j<m; j++) {
 			if(non_int[j] == str[i]) {
-				mistake+=1;
-				break;
-			}
-			if(non_int[j]==str[i]) {
 				mistake+=1;
 				break;
 			}
@@ -151,9 +147,9 @@ menu:
 			cout << "\nCSC205\t" << CSC205[c];
 			cout << "\nMTH201\t" << MTH201[c];
 			cout << "\nMTH205\t" << MTH205[c];
-			cout << "\nGST201\t" << GST201[c];
-			cout << "\nGPA    \t" << GPA[c] << "\n";
-			//cout << "\n";
+			cout << "\nGST201\t" << GST201[c] ;
+			cout << "\n\nGPA    \t" << GPA[c] << "\n";
+			cout << "\n";
 			goto menu;
 			break;
 		}
@@ -193,6 +189,7 @@ invalid:
 						cout << "\nCSC201\t" << CSC201[c] << "\nUpdate CSC201 score\nEnter score: ";
 						cin >> str;
 						score = valid(str);
+						cout<<score;
 						if((score<0)||(score>100)) {
 							cout << "Invalid Value\n";
 							loop = i;
@@ -201,10 +198,11 @@ invalid:
 							CSC201[c] = score;
 						}
 						break;
-					case 1:
+					case 1: {
 						cout << "\nCSC205\t" << CSC205[c] << "\nUpdate CSC205 score\nEnter score: ";
 						cin >> str;
 						score = valid(str);
+						cout<<score;
 						if((score<0)||(score>100)) {
 							cout << "Invalid Value\n";
 							loop = i;
@@ -213,10 +211,12 @@ invalid:
 							CSC205[c] = score;
 						}
 						break;
+					}
 					case 2:
 						cout << "\nMTH201\t" << MTH201[c] << "\nUpdate MTH201 score\nEnter score: ";
 						cin >> str;
 						score = valid(str);
+						cout<<score;
 						if((score<0)||(score>100)) {
 							cout << "Invalid Value\n";
 							loop = i;
@@ -254,25 +254,60 @@ invalid:
 			cout << "Previous GPA: " << GPA[c] << endl;
 			GPA[c] = GPAS(CSC201[c], CSC205[c], MTH201[c], MTH205[c], GST201[c]);
 			cout << "Current GPA: " << GPA[c] << "\n";
-			//	cout << "\n";
+			cout << "\n";
 			goto menu;
 			break;
 		}
 		case 'P':
-		case 'p':
+		case 'p': {
+			int m = sizeof(MATRIC)/sizeof(MATRIC[0]);
+//saveindi:
+			string matt = "Empty";
+
+			cout<< "Enter matric number: "<<endl;
+			cin>>matt;
+			for(int i=0; i<m; i++) {
+				if(matt == MATRIC[i]) {
+					ofstream studentfile ("student.txt");
+					if (studentfile.is_open()) {
+						studentfile << "Student's Name\t" << NAME[i];
+						studentfile << "\nMatric No\t" << MATRIC[i];
+						studentfile << "\nCSC201\t" << CSC201[i];
+						studentfile << "\nCSC205\t" << CSC205[i];
+						studentfile << "\nMTH201\t" << MTH201[i];
+						studentfile << "\nMTH205\t" << MTH205[i];
+						studentfile << "\nGST201\t" << GST201[i];
+						studentfile << "\nGPA    \t" << GPA[i] << "\n";
+						studentfile.close();
+					} else {
+						cout << "Unable to open file";
+					}
+					matt = "aa";
+				}
+			}
+			if (matt != "aa") {
+				cout<<"Invalid Matric Number\n";
+//				for(int j=0; j<m; j++) {
+//					cout<<MATRIC[j]<<", ";
+//				}
+//				cout<<"\n";
+				goto menu;
+			}
+			cout<<"\n";
+			goto menu;
 			break;
+		}
 		case 'A':
 		case 'a':
 			break;
 		case 'E':
 		case 'e':
+			 	cout<<"Code Exited"<<endl;
 			break;
 		default:
 			cout<<"Invalid entry.\nTry again\n"<<endl;
 			goto menu;
 	}
-
-
 
 
 	return 0;
