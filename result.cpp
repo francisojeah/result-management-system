@@ -37,7 +37,7 @@ int grade_point(int gp){
 	
 	return gp;
 }
-float GPA(int a, int b, int c, int d, int e){
+float GPAS(int a, int b, int c, int d, int e){
 	float gpa;
 	a = grade_point(a);
 	b = grade_point(b);
