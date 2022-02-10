@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -37,7 +39,7 @@ int grade_point(int gp){
 	
 	return gp;
 }
-float GPA(int a, int b, int c, int d, int e){
+float GPAS(int a, int b, int c, int d, int e){
 	float gpa;
 	a = grade_point(a);
 	b = grade_point(b);
@@ -114,8 +116,8 @@ int main() {
 
 char option;
 char search, update, save, view, exit;
-
 cout <<"\t\tMain Menu\n\n";
+menu:
 cout << "To SEARCH for a Student's Result Press F\n";
 cout << "To UPDATE a Student's Result Press U\n";
 cout << "To SAVE a Student's Result to a File Press P\n";
@@ -127,66 +129,25 @@ cin >> option;
 switch(option) {
 case 'F':
 case 'f':
-	break;
-case 'U':
-case 'u':
-	break;
-case 'P':
-case 'p':
-	break;
-case 'A':
-case 'a':
-	break;
-case 'E':
-case 'e':
-	break;
-}
-
-//GPA CHECKER
-int grade_point(int gp) {
-	if(gp<45) {
-		gp=0;
-	} else if(gp<50) {
-		gp=2;
-	} else if(gp<60) {
-		gp=3;
-	} else if(gp<70) {
-		gp=4;
-	} else if(gp>=70) {
-		gp=5;
-	}
-
-	return gp;
-}
-float GPA(int a, int b, int c, int d, int e) {
-	float gpa;
-	a = grade_point(a);
-	b = grade_point(b);
-	c = grade_point(c);
-	d = grade_point(d);
-	e = grade_point(e);
-
-	gpa = (a+b+c+d+e)/5.0;
-	return gpa;
-
-	 
-	 
-	//Lotanna's Part
 	//SEARCH
 	int n = sizeof(MATRIC)/sizeof(MATRIC[0]); //gets the number of elements in an array
 	string mat = "Empty";
-	
 
 	cout << "SEARCH RECORDS" << endl;
 	cout << "Enter Student's Matriculation Number: ";
 	cin >> mat;
 	int c=0;
-	
+	//GET THE INDEX OF THE MATRIC NUMBER ENTERED
 	while(c<n){
 		if(MATRIC[c] == mat){
 			break;
 		}
 		c++;
+	}
+	//IF THE MARTIC NUMBER IS INVAID
+	if(c==n){
+		cout << "No such Matriculation Number exist" << endl;
+		goto menu;	 
 	}
 	float gpa;
 	cout << "Student's Name\t" << NAME[c];
@@ -196,9 +157,13 @@ float GPA(int a, int b, int c, int d, int e) {
 	cout << "\nMTH201\t" << MTH201[c];
 	cout << "\nMTH205\t" << MTH205[c];
 	cout << "\nGST201\t" << GST201[c];
-	
+	break;
+case 'U':
+case 'u':
 	//UPDATE
-
+	int n = sizeof(MATRIC)/sizeof(MATRIC[0]); //gets the number of elements in an array
+	string mat = "Empty";
+	
 	cout << "UPDATE RECORD" << endl;
 	cout << "Enter Student's Matriculation Number: ";
 	cin >> mat;
@@ -209,6 +174,11 @@ float GPA(int a, int b, int c, int d, int e) {
 			break;
 		}
 		c++;
+	}
+	
+	if(c==n){
+		cout << "No such Matriculation Number exist" << endl;
+		goto menu;	 
 	}
 	float gpa;
 	cout << "Student's Name\t" << NAME[c];
@@ -286,6 +256,19 @@ float GPA(int a, int b, int c, int d, int e) {
 	cout << "Previous GPA: " << GPA[c] << endl;
 	GPA[c] = GPAS(CSC201[c], CSC205[c], MTH201[c], MTH205[c], GST201[c]);
 	cout << "Current GPA: " << GPA[c] << endl;
+	break;
+case 'P':
+case 'p':
+	break;
+case 'A':
+case 'a':
+	break;
+case 'E':
+case 'e':
+	break;
+}
+
+
 
 return 0;
 }
