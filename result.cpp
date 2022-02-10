@@ -48,7 +48,7 @@ float GPAS(int a, int b, int c, int d, int e) {
 }
 
 
-string NAME[] = {"Kenenna EGBUNA","Anjolaoluwa OLOWOKERE" , "Anjolaoluwa JUBA" , "Chimaje Agada" ,  "Abba Ali-Concern" , "Oluwapese ALO" ,  "Ogechukwu ATA" , "Fareed Bello" , "Nwanne EGBUNA" ,  "Sophia EZEH"};
+string NAME[] = {"Kenenna EGBUNA","Anjolaoluwa OLOWOKERE", "Anjolaoluwa JUBA", "Chimaje Agada",  "Abba Ali-Concern", "Oluwapese ALO",  "Ogechukwu ATA", "Fareed Bello", "Nwanne EGBUNA",  "Sophia EZEH"};
 string MATRIC[] = {"SST/2019/0001", "SST/2019/0002", "SST/2019/0003", "SST/2019/0004", "SST/2019/0005", "SST/2019/0006", "SST/2019/0007", "SST/2019/0008", "SST/2019/0009", "SST/2019/0010"};
 int CSC201[] = {84,91,66,83,74,66,61,41,62,64};
 int CSC205[] = {90,75,81,49,80,82,58,31,50,30};
@@ -71,7 +71,7 @@ int valid(string str) {
 	int output;
 	stringstream strs(str);
 	strs>>output;
-	char non_int[] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\|}{:',.<>/?`'";
+	char non_int[] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
 	int mistake = 0;
 	int n = sizeof(str)/sizeof(str[0]);
 	int m = sizeof(non_int)/sizeof(non_int[0]);
@@ -110,8 +110,9 @@ int main() {
 
 
 	char option;
-	cout <<"\t\tMain Menu\n\n";
 menu:
+	cout <<"\t\tMain Menu\n\n";
+
 	cout << "To SEARCH for a Student's Result Press F\n";
 	cout << "To UPDATE a Student's Result Press U\n";
 	cout << "To SAVE a Student's Result to a File Press P\n";
@@ -122,8 +123,7 @@ menu:
 
 	switch(option) {
 		case 'F':
-		case 'f':
-			{
+		case 'f': {
 			//SEARCH
 			int n = sizeof(MATRIC)/sizeof(MATRIC[0]); //gets the number of elements in an array
 			string mat = "Empty";
@@ -156,10 +156,9 @@ menu:
 			//cout << "\n";
 			goto menu;
 			break;
-			}
+		}
 		case 'U':
-		case 'u':
-			{
+		case 'u': {
 			//UPDATE
 			int n = sizeof(MATRIC)/sizeof(MATRIC[0]); //gets the number of elements in an array
 			string mat = "Empty";
@@ -184,7 +183,7 @@ menu:
 			cout << "Student's Name\t" << NAME[c];
 			cout << "\nMatric No\t" << MATRIC[c];
 			int loop = 0;
-			invalid:
+invalid:
 			for(int i=loop; i<5; i++) {
 				int score;
 				string str = "abc";
@@ -255,10 +254,10 @@ menu:
 			cout << "Previous GPA: " << GPA[c] << endl;
 			GPA[c] = GPAS(CSC201[c], CSC205[c], MTH201[c], MTH205[c], GST201[c]);
 			cout << "Current GPA: " << GPA[c] << "\n";
-		//	cout << "\n";
+			//	cout << "\n";
 			goto menu;
 			break;
-			}
+		}
 		case 'P':
 		case 'p':
 			break;
@@ -268,8 +267,11 @@ menu:
 		case 'E':
 		case 'e':
 			break;
+		default:
+			cout<<"Invalid entry.\nTry again\n"<<endl;
+			goto menu;
 	}
-	//sabaru 
+
 
 
 
