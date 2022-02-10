@@ -5,17 +5,17 @@
 using namespace std;
 
 bool getPassword() {
-    for ( int attempts = 0; attempts <10; ++attempts ) {
-        string password;
-        cout << "Enter your password: " << password << endl;
-        getline(cin, password);
+	for ( int attempts = 0; attempts <10; ++attempts ) {
+		string password;
+		cout << "Enter your password: " << password << endl;
+		getline(cin, password);
 
-        if ( password == "csc201" ) {
-            cout << "Welcome!";
-            return true;
-        }
-    }
-    return false;
+		if ( password == "csc201" ) {
+			cout << "Welcome!";
+			return true;
+		}
+	}
+	return false;
 }
 
 int grade_point(int gp){
@@ -101,35 +101,74 @@ int valid(string str){
 
 int main() {
 	string userName;
-	
+
 	cout << "				Pan-Atlantic University\n 				Result Management System" << endl;
 	cout << "Provide your login details: " << endl;
 	cout << "Enter your username: ";
 	cin >> userName;
-    if ( !getPassword() )
-    cout << "Invalid Password \n Kindly re-enter a valid Password." << endl;
-        return true;
-    cout << endl;
+	if ( !getPassword() )
+		cout << "Invalid Password \n Kindly re-enter a valid Password." << endl;
+	return true;
+	cout << endl;
 }
 
-	char option;
-	const char Search_Result = F;
-			Update_Result = U;
-			Save_Result = P;
-			View_All = A;
-			Exit_Program = E;
-			
-	cout <<"\t\tMain Menu\n\n";
-	cout << "To SEARCH for a Student's Result\n";
-	cout << "To UPDATE a Student's Result\n";
-	cout << "To SAVE a Student's Result to a File\n";
-	cout << "To VIEW all Results\n";
-	cout << "EXIT Program\n";
-	cout << "\t\tEnter an option\n";
-	cin >> option;
-	
-	if (option == Search_Result)
-	 
+char option;
+char search, update, save, view, exit;
+
+cout <<"\t\tMain Menu\n\n";
+cout << "To SEARCH for a Student's Result Press F\n";
+cout << "To UPDATE a Student's Result Press U\n";
+cout << "To SAVE a Student's Result to a File Press P\n";
+cout << "To VIEW all Results Press A\n";
+cout << "EXIT Program Press E\n\n";
+cout << "\t\tEnter an option\n";
+cin >> option;
+
+switch(option) {
+case 'F':
+case 'f':
+	break;
+case 'U':
+case 'u':
+	break;
+case 'P':
+case 'p':
+	break;
+case 'A':
+case 'a':
+	break;
+case 'E':
+case 'e':
+	break;
+}
+
+//GPA CHECKER
+int grade_point(int gp) {
+	if(gp<45) {
+		gp=0;
+	} else if(gp<50) {
+		gp=2;
+	} else if(gp<60) {
+		gp=3;
+	} else if(gp<70) {
+		gp=4;
+	} else if(gp>=70) {
+		gp=5;
+	}
+
+	return gp;
+}
+float GPA(int a, int b, int c, int d, int e) {
+	float gpa;
+	a = grade_point(a);
+	b = grade_point(b);
+	c = grade_point(c);
+	d = grade_point(d);
+	e = grade_point(e);
+
+	gpa = (a+b+c+d+e)/5.0;
+	return gpa;
+
 	 
 	 
 	//Lotanna's Part
@@ -247,7 +286,8 @@ int main() {
 	cout << "Previous GPA: " << GPA[c] << endl;
 	GPA[c] = GPAS(CSC201[c], CSC205[c], MTH201[c], MTH205[c], GST201[c]);
 	cout << "Current GPA: " << GPA[c] << endl;
-	 return 0;
+
+return 0;
 }
 
 
