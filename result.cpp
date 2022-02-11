@@ -6,20 +6,6 @@
 
 using namespace std;
 
-//bool getPassword() {
-//	for ( int attempts = 0; attempts <10; ++attempts ) {
-//		string password;
-//		cout << "Enter your password: " << password << endl;
-//		getline(cin, password);
-//
-//		if ( password == "csc201" ) {
-//			cout << "Welcome!";
-//			return true;
-//		}
-//	}
-//	return false;
-//}
-
 int grade_point(int gp) {
 	if(gp<45) {
 		gp=0;
@@ -71,7 +57,7 @@ int valid(string str) {
 	int output;
 	stringstream strs(str);
 	strs>>output;
- string non_int = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
+	string non_int = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
 	int mistake = 0;
 	int n = sizeof(str)/sizeof(str[0]);
 	int m = sizeof(non_int)/sizeof(non_int[0]);
@@ -94,16 +80,42 @@ int valid(string str) {
 }
 
 int main() {
-//	string userName;
-//	cout << "				Pan-Atlantic University\n 				Result Management System" << endl;
-//	cout << "Provide your login details: " << endl;
-//	cout << "Enter your username: ";
-//	cin >> userName;
-//	if ( !getPassword() )
-//		cout << "Invalid Password \n Kindly re-enter a valid Password." << endl;
-//	return true;
-//	cout << endl;
+int i;
+string userName, password;
+	string user[] = {"moses", "desmond", "adaora", "patrick201", "patrick205"};
+	string pass[] = {"csc201", "csc205", "gst201", "mth201", "mth205"};
+	int zi= sizeof(user)/sizeof(user[0]);
+	int xo = sizeof(pass)/sizeof(pass[0]);
+	ofstream userpass("logininfo.txt");
+	if (userpass.is_open()) {
+		userpass << "Username\t\tPassword\n";
+			for(int i=0; i<zi; i++) { 
+				userpass<< user[i]<<"\t\t"<<pass[i]<< endl;
+		}
+	} else cout << "Unable to open file.";
 
+	cout << "				Pan-Atlantic University\n 				Result Management System" << endl;
+	cout << "Provide your login details. " << endl;
+
+entry:
+	cout << "Enter your username: ";
+	cin >> userName;
+	for(int i=0; i<=zi; i++) {
+		if(userName == user[i]) {
+			cout << "Enter your password: ";
+			cin >> password;
+			if (password == pass[i]) {
+				cout << "Welcome." << endl;
+				break;
+			} else {
+				cout << "Invalid password. Please check your username and password." << endl;
+				goto entry;
+			} }
+		else if (i == zi) {
+			cout<<"Invalid Username"<<endl;
+			goto entry;
+		}
+	}
 
 	char option;
 menu:
@@ -302,7 +314,7 @@ invalid:
 			break;
 		case 'E':
 		case 'e':
-			 	cout<<"Code Exited"<<endl;
+			cout<<"Code Exited"<<endl;
 			break;
 		default:
 			cout<<"Invalid entry.\nTry again\n"<<endl;
