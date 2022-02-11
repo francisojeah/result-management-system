@@ -1,0 +1,8 @@
+Student's Name	Abba Ali-Concern
+Matric No	SST/2019/0005
+CSC201	74
+CSC205	80
+MTH201	31
+MTH205	33
+GST201	80
+GPA    	3

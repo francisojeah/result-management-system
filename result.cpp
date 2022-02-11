@@ -71,7 +71,7 @@ int valid(string str) {
 	int output;
 	stringstream strs(str);
 	strs>>output;
- string non_int = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
+	string non_int = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
 	int mistake = 0;
 	int n = sizeof(str)/sizeof(str[0]);
 	int m = sizeof(non_int)/sizeof(non_int[0]);
@@ -263,12 +263,24 @@ invalid:
 			int m = sizeof(MATRIC)/sizeof(MATRIC[0]);
 //saveindi:
 			string matt = "empty";
+			cout<< "PRINT RESULT TO FILE\n";
 
-			cout<< "Enter matric number: "<<endl;
+			cout<< "Enter Student's Matriculation Number: ";
 			cin>>matt;
+
 			for(int i=0; i<m; i++) {
 				if(matt == MATRIC[i]) {
-					ofstream studentfile ("student.txt");
+					cout << "Student's Name\t" << NAME[i];
+					cout  << "\nMatric No\t" << MATRIC[i];
+					cout  << "\nCSC201\t" << CSC201[i];
+					cout  << "\nCSC205\t" << CSC205[i];
+					cout  << "\nMTH201\t" << MTH201[i];
+					cout  << "\nMTH205\t" << MTH205[i];
+					cout  << "\nGST201\t" << GST201[i];
+					cout  << "\n\nGPA    \t" << GPA[i] << "\n";
+		 	 		cout<<"Record written to file name "<<NAME[i]<<".txt"<<endl;
+
+					ofstream studentfile (NAME[i]+".txt");
 					if (studentfile.is_open()) {
 						studentfile << "Student's Name\t" << NAME[i];
 						studentfile << "\nMatric No\t" << MATRIC[i];
@@ -277,7 +289,7 @@ invalid:
 						studentfile << "\nMTH201\t" << MTH201[i];
 						studentfile << "\nMTH205\t" << MTH205[i];
 						studentfile << "\nGST201\t" << GST201[i];
-						studentfile << "\nGPA    \t" << GPA[i] << "\n";
+						studentfile << "\n\nGPA    \t" << GPA[i] << "\n";
 						studentfile.close();
 					} else {
 						cout << "Unable to open file";
@@ -302,7 +314,7 @@ invalid:
 			break;
 		case 'E':
 		case 'e':
-			 	cout<<"Code Exited"<<endl;
+			cout<<"Code Exited"<<endl;
 			break;
 		default:
 			cout<<"Invalid entry.\nTry again\n"<<endl;
