@@ -262,7 +262,7 @@ invalid:
 		case 'p': {
 			int m = sizeof(MATRIC)/sizeof(MATRIC[0]);
 //saveindi:
-			string matt = "Empty";
+			string matt = "empty";
 
 			cout<< "Enter matric number: "<<endl;
 			cin>>matt;
