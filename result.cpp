@@ -212,7 +212,7 @@ invalid:
 						cin >> str;
 						score1 = valid(str);
 						if((score1<0)||(score1>100)) {
-							cout << "Invalid Value\n" << score1;
+							cout << "Invalid Value\n";
 							loop = i;
 							goto invalid;
 						} else {
@@ -276,7 +276,7 @@ invalid:
 						cin >> str4;
 						score5 = valid(str4);
 						if((score5<0)||(score5>100)) {
-							cout << "Invalid Value\n" << score5;
+							cout << "Invalid Value\n";
 							loop = i;
 							goto invalid;
 						} else {
@@ -339,7 +339,7 @@ invalid:
 				if(count==-1) {
 					cout << "NAME" << "\t"<< "MATRIC" << "\t" << "CSC201" << "\t" << "CSC205" << "\t" << "MTH201" << "\t" << "MTH203" << "\t" << "GST201" << "\t" << "GPA" << "\n" <<endl;
 				} else {
-					cout << NAME[count] << "\t"<< MATRIC[count] << "\t" << CSC201[count] << "\t" << CSC205[count] << "\t" << MTH201[count] << "\t" << MTH205[count] << "\t" << GST201[count] << "\t" << GPA[count] << "\n";
+					cout << NAME[count] << "\t"<< MATRIC[count] << "\t" << CSC201[count] << "\t" << CSC205[count] << "\t" << MTH201[count] << "\t" << MTH205[count] << "\t" << GST201[count] << "\t" << GPA[count] << "\n\n";
 				}
 			}
 			goto menu;
