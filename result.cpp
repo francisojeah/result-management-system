@@ -67,11 +67,12 @@ float GPA[] = {GPAS(CSC201[0], CSC205[0], MTH201[0], MTH205[0], GST201[0]),
                GPAS(CSC201[9], CSC205[9], MTH201[9], MTH205[9], GST201[9])
               };
 
+
+
 int valid(string str) {
 	int output;
-	stringstream strs(str);
-	strs>>output;
- string non_int = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
+
+	char non_int[] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()-=_+\\}|{:',.<>/?`'";
 	int mistake = 0;
 	int n = sizeof(str)/sizeof(str[0]);
 	int m = sizeof(non_int)/sizeof(non_int[0]);
@@ -85,10 +86,15 @@ int valid(string str) {
 				break;
 			}
 		}
+		if(non_int[j]==str[i]){
+            break;
+		}
 	}
 	if(mistake>0) {
 		return -1;
 	} else {
+        stringstream strs(str);
+        strs>>output;
 		return output;
 	}
 }
@@ -104,6 +110,20 @@ int main() {
 //	return true;
 //	cout << endl;
 
+	int arraySize = *(&NAME + 1) - NAME;
+
+	ofstream result("results.txt");
+	if (result.is_open()) {
+
+		for(int count = 0; count < arraySize; count ++) {
+			result << NAME[count] << "\t\t"<< MATRIC[count] << "\t" << CSC201[count] << "\t" << CSC205[count] << "\t" << MTH201[count] << "\t" << MTH205[count] << "\t" << GST201[count] << "\t" << GPA[count] << "\n";
+
+		}
+		result.close();
+
+	}else{
+		cout << "NO";
+	}
 
 	char option;
 menu:
@@ -181,74 +201,90 @@ menu:
 			int loop = 0;
 invalid:
 			for(int i=loop; i<5; i++) {
-				int score;
-				string str = "abc";
+			//	int score;
+				//string str = "abc";
 
 				switch(i) {
-					case 0:
+					case 0:{
+					    string str;
+					    int score1;
 						cout << "\nCSC201\t" << CSC201[c] << "\nUpdate CSC201 score\nEnter score: ";
 						cin >> str;
-						score = valid(str);
-						cout<<score;
-						if((score<0)||(score>100)) {
-							cout << "Invalid Value\n";
+						score1 = valid(str);
+						if((score1<0)||(score1>100)) {
+							cout << "Invalid Value\n" << score1;
 							loop = i;
 							goto invalid;
 						} else {
-							CSC201[c] = score;
-						}
-						break;
-					case 1: {
-						cout << "\nCSC205\t" << CSC205[c] << "\nUpdate CSC205 score\nEnter score: ";
-						cin >> str;
-						score = valid(str);
-						cout<<score;
-						if((score<0)||(score>100)) {
-							cout << "Invalid Value\n";
-							loop = i;
-							goto invalid;
-						} else {
-							CSC205[c] = score;
+							CSC201[c] = score1;
+							cout << CSC201[c] << endl;
 						}
 						break;
 					}
-					case 2:
+					case 1: {
+					    string str1;
+					    int score2;
+						cout << "\nCSC205\t" << CSC205[c] << "\nUpdate CSC205 score\nEnter score: ";
+						cin >> str1;
+						score2 = valid(str1);
+						if((score2<0)||(score2>100)) {
+							cout << "Invalid Value\n";
+							loop = i;
+							goto invalid;
+						} else {
+							CSC205[c] = score2;
+							cout << CSC205[c]<<endl;
+						}
+						break;
+					}
+					case 2:{
+					    string str2;
+					    int score3;
 						cout << "\nMTH201\t" << MTH201[c] << "\nUpdate MTH201 score\nEnter score: ";
-						cin >> str;
-						score = valid(str);
-						cout<<score;
-						if((score<0)||(score>100)) {
+						cin >> str2;
+						score3 = valid(str2);
+						if((score3<0)||(score3>100)) {
 							cout << "Invalid Value\n";
 							loop = i;
 							goto invalid;
 						} else {
-							MTH201[c] = score;
+							MTH201[c] = score3;
+							cout << MTH201[c] << endl;
 						}
 						break;
-					case 3:
+					}
+					case 3:{
+					    string str3;
+					    int score4;
 						cout << "\nMTH205\t" << MTH205[c] << "\nUpdate MTH205 score\nEnter score: ";
-						cin >> str;
-						score = valid(str);
-						if((score<0)||(score>100)) {
+						cin >> str3;
+						score4 = valid(str3);
+						if((score4<0)||(score4>100)) {
 							cout << "Invalid Value\n";
 							loop = i;
 							goto invalid;
 						} else {
-							MTH205[c] = score;
+							MTH205[c] = score4;
+							cout << MTH205[c] <<endl;
 						}
 						break;
-					case 4:
+					}
+					case 4:{
+					    string str4;
+					    int score5;
 						cout << "\nGST201\t" << GST201[c] << "\nUpdate GST201 score\nEnter score: ";
-						cin >> str;
-						score = valid(str);
-						if((score<0)||(score>100)) {
-							cout << "Invalid Value\n";
+						cin >> str4;
+						score5 = valid(str4);
+						if((score5<0)||(score5>100)) {
+							cout << "Invalid Value\n" << score5;
 							loop = i;
 							goto invalid;
 						} else {
-							GST201[c] = score;
+							GST201[c] = score5;
+							cout << GST201[c] <<endl;
 						}
 						break;
+					}
 				}
 			}
 			cout << "Previous GPA: " << GPA[c] << endl;
@@ -298,11 +334,20 @@ invalid:
 			break;
 		}
 		case 'A':
-		case 'a':
+		case 'a': {
+			for(int count = -1; count < arraySize; count ++) {
+				if(count==-1) {
+					cout << "NAME" << "\t"<< "MATRIC" << "\t" << "CSC201" << "\t" << "CSC205" << "\t" << "MTH201" << "\t" << "MTH203" << "\t" << "GST201" << "\t" << "GPA" << "\n" <<endl;
+				} else {
+					cout << NAME[count] << "\t"<< MATRIC[count] << "\t" << CSC201[count] << "\t" << CSC205[count] << "\t" << MTH201[count] << "\t" << MTH205[count] << "\t" << GST201[count] << "\t" << GPA[count] << "\n";
+				}
+			}
+			goto menu;
 			break;
+		}
 		case 'E':
 		case 'e':
-			 	cout<<"Code Exited"<<endl;
+			cout<<"Code Exited"<<endl;
 			break;
 		default:
 			cout<<"Invalid entry.\nTry again\n"<<endl;
