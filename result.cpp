@@ -312,6 +312,38 @@ invalid:
 			case 'p': {
 				int m = sizeof(MATRIC)/sizeof(MATRIC[0]);
 //saveindi:
+			string matt = "empty";
+			cout<< "PRINT RESULT TO FILE\n";
+
+			cout<< "Enter Student's Matriculation Number: ";
+			cin>>matt;
+
+			for(int i=0; i<m; i++) {
+				if(matt == MATRIC[i]) {
+					cout << "Student's Name\t" << NAME[i];
+					cout  << "\nMatric No\t" << MATRIC[i];
+					cout  << "\nCSC201\t" << CSC201[i];
+					cout  << "\nCSC205\t" << CSC205[i];
+					cout  << "\nMTH201\t" << MTH201[i];
+					cout  << "\nMTH205\t" << MTH205[i];
+					cout  << "\nGST201\t" << GST201[i];
+					cout  << "\n\nGPA    \t" << GPA[i] << "\n";
+		 	 		cout<<"Record written to file name "<<NAME[i]<<".txt"<<endl;
+
+					ofstream studentfile (NAME[i]+".txt");
+					if (studentfile.is_open()) {
+						studentfile << "Student's Name\t" << NAME[i];
+						studentfile << "\nMatric No\t" << MATRIC[i];
+						studentfile << "\nCSC201\t" << CSC201[i];
+						studentfile << "\nCSC205\t" << CSC205[i];
+						studentfile << "\nMTH201\t" << MTH201[i];
+						studentfile << "\nMTH205\t" << MTH205[i];
+						studentfile << "\nGST201\t" << GST201[i];
+						studentfile << "\n\nGPA    \t" << GPA[i] << "\n";
+						studentfile.close();
+					} else {
+						cout << "Unable to open file";
+            
 				string matt = "empty";
 
 				cout<< "Enter matric number: "<<endl;
@@ -333,6 +365,7 @@ invalid:
 							cout << "Unable to open file";
 						}
 						matt = "aa";
+
 					}
 				}
 				if (matt != "aa") {
@@ -367,6 +400,7 @@ invalid:
 				cout<<"Invalid entry.\nTry again\n"<<endl;
 				goto menu;
 		}
+
 
 	}
 
