@@ -1,0 +1,6 @@
+Username		Password
+moses		csc201
+desmond		csc205
+adaora		gst201
+patrick201		mth201
+patrick205		mth205
