@@ -1,8 +1,8 @@
-Student's Name	Oluwapese ALO
-Matric No	SST/2019/0006
-CSC201	66
-CSC205	82
-MTH201	78
-MTH205	62
-GST201	70
-GPA    	4.6
+Student's Name	Chimaje Agada
+Matric No	SST/2019/0004
+CSC201	83
+CSC205	49
+MTH201	40
+MTH205	36
+GST201	74
+GPA    	2.4
