@@ -1,9 +1,0 @@
-Student's Name	Oluwapese ALO
-Matric No	SST/2019/0006
-CSC201	66
-CSC205	82
-MTH201	78
-MTH205	62
-GST201	70
-
-GPA    	4.6
