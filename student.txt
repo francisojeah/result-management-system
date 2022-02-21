@@ -1,8 +1,0 @@
-Student's Name	Chimaje Agada
-Matric No	SST/2019/0004
-CSC201	83
-CSC205	49
-MTH201	40
-MTH205	36
-GST201	74
-GPA    	2.4

@@ -1,6 +1,9 @@
-Username		Password
+Username	Password
 moses		csc201
 desmond		csc205
 adaora		gst201
-patrick201		mth201
-patrick205		mth205
+patrick201	mth201
+patrick205	mth205
+celestine	gst211
+falope	ent201
+faith		sta205
