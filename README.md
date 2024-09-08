@@ -1,6 +1,5 @@
 ## Result Management System
 
----
 
 #### Project Overview
 The **Result Management System** is a secure application developed to manage student results efficiently. Designed and implemented using C++, the system allows authorized users to view, update, and manage student performance data, providing a reliable tool for academic institutions to handle student results securely and effectively.
